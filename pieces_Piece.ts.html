@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> pieces/Piece.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -89,60 +91,77 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>pieces/Piece.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Checkers</h1>
-<p>The goal of this project is to implement a Checkers AI with the minimax
-algorithm and alpha-beta pruning.</p>
-<p>This is to serve as a learning project for myself and a place to document my
-findings.</p>
-<h2>Important Links</h2>
-<ul>
-<li><a href="https://github.com/M3L6H/checkers">Click here for the github repository.</a></li>
-<li><a href="https://m3l6h.github.io/checkers-docs/">Click here for the project documentation.</a></li>
-</ul>
-<h2>About</h2>
-<p><a href="https://en.wikipedia.org/wiki/Draughts">Checkers</a> is a strategy game involving
-two players. The players take turns to move their pieces diagonally across an
-8x8 board. The objective of the game is to capture all of your opponent's
-pieces.</p>
-<p><a href="https://en.wikipedia.org/wiki/Minimax">Minimax</a> is an algorithm that builds out
-a decision tree from the current game position with a specified depth, and then
-evaluates the tree picking the best move for each player at any given point. It
-then uses the evaluation to decide on a move to take at the current point in the
-game.</p>
-<p>Alpha-beta pruning is an optimization on minimax that prunes branches in the
-tree that would never be chosen - assuming best play from both sides. A helpful
-video giving an overview of these concepts can be found
-<a href="https://www.youtube.com/watch?v=l-hh51ncgDI&amp;ab_channel=SebastianLague">here</a>.</p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Color from "./Color";
+
+/**
+ * Defines the base class of a checkers piece.
+ * 
+ * @abstract
+ * @category Pieces
+ * 
+ * @mermaid
+ * classDiagram
+ *  Piece &lt;|-- NullPiece : extends
+ *  Piece &lt;|-- BlackPiece : extends
+ *  Piece &lt;|-- RedPiece : extends
+ *  Piece: +Color color*
+ *  Piece: +boolean isKing
+ *  Piece: !boolean _isKing
+ *  Piece: +promote()
+ *  NullPiece: +Color color
+ *  NullPiece: +boolean isKing
+ *  NullPiece: +promote()
+ *  BlackPiece: +Color color
+ *  RedPiece: +Color color
+ */
+abstract class Piece {
+
+  /**
+   * @abstract
+   * @readonly
+   * @property {Color} color  - The {@link Color} of the piece
+   */
+  abstract readonly color: Color;
+  
+  protected _isKing: boolean;
+
+  constructor() {
+    this._isKing = false;
+  }
+
+  /**
+   * @readonly
+   * @type {boolean}
+   * @property {boolean} isKing - Whether this piece is a king
+   */
+  get isKing(): boolean {
+    return this._isKing;
+  }
+
+  /**
+   * Promotes the piece into a King, if applicable.
+   * 
+   * @see NullPiece
+   */
+  public promote(): void {
+    this._isKing = true;
+  }
+}
+
+export default Piece;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

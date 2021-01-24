@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> pieces/NullPiece.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -89,60 +91,59 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>pieces/NullPiece.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Checkers</h1>
-<p>The goal of this project is to implement a Checkers AI with the minimax
-algorithm and alpha-beta pruning.</p>
-<p>This is to serve as a learning project for myself and a place to document my
-findings.</p>
-<h2>Important Links</h2>
-<ul>
-<li><a href="https://github.com/M3L6H/checkers">Click here for the github repository.</a></li>
-<li><a href="https://m3l6h.github.io/checkers-docs/">Click here for the project documentation.</a></li>
-</ul>
-<h2>About</h2>
-<p><a href="https://en.wikipedia.org/wiki/Draughts">Checkers</a> is a strategy game involving
-two players. The players take turns to move their pieces diagonally across an
-8x8 board. The objective of the game is to capture all of your opponent's
-pieces.</p>
-<p><a href="https://en.wikipedia.org/wiki/Minimax">Minimax</a> is an algorithm that builds out
-a decision tree from the current game position with a specified depth, and then
-evaluates the tree picking the best move for each player at any given point. It
-then uses the evaluation to decide on a move to take at the current point in the
-game.</p>
-<p>Alpha-beta pruning is an optimization on minimax that prunes branches in the
-tree that would never be chosen - assuming best play from both sides. A helpful
-video giving an overview of these concepts can be found
-<a href="https://www.youtube.com/watch?v=l-hh51ncgDI&amp;ab_channel=SebastianLague">here</a>.</p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Color from "./Color";
+import Piece from "./Piece";
+
+/**
+ * Represents an empty square on the {@link Board}.
+ * 
+ * @category Pieces
+ * @extends Piece
+ */
+class NullPiece extends Piece {
+
+  /**
+   * @readonly
+   * @property {Color} color -  The color of the NullPiece is always {@link Color}.Null.
+   */
+  readonly color: Color;
+
+  constructor() {
+    super();
+    this.color = Color.Null;
+  }
+
+  /**
+   * Getter for the isKing property. Always returns false, since a NullPiece
+   * cannot be a "king."
+   * 
+   * @readonly
+   * @type {boolean}
+   * @property {boolean} isKing - Always false
+   */
+  get isKing(): boolean { return false; } // eslint-disable-line
+
+  /**
+   * Method stub implemented for the {@link Piece} interface.
+   * Does nothing, since a NullPiece cannot promote.
+   */
+  public promote(): void { } // eslint-disable-line
+}
+
+export default NullPiece;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
